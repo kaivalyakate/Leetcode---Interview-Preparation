@@ -6,7 +6,7 @@ import java.util.List;
 public class HowSum {
 
     public static List<Integer> howSum(int targetSum, List<Integer> numbers, HashMap<Integer, List<Integer>> memo) {
-        if (memo.getOrDefault(targetSum, Arrays.asList(new Integer[] { -1 })) != Arrays.asList(new Integer[] { -1 })) {
+        if (memo.containsKey(targetSum)) {
             return memo.get(targetSum);
         } else if (targetSum == 0) {
             return new ArrayList<>();
