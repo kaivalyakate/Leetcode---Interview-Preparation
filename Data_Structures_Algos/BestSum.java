@@ -5,8 +5,10 @@ import java.util.List;
 
 public class BestSum {
 
-    public static List<Integer> bestSum(int targetSum, List<Integer> numbers) {
-        if (targetSum == 0) {
+    public static List<Integer> bestSum(int targetSum, List<Integer> numbers, HashMap<Integer, List<Integer>> memo) {
+        if (memo.containsKey(targetSum)) {
+            return memo.get(targetSum);
+        } else if (targetSum == 0) {
             return new ArrayList<>();
         } else if (targetSum < 0) {
             return null;
@@ -16,7 +18,7 @@ public class BestSum {
 
         for (Integer x : numbers) {
             int remainder = targetSum - x;
-            List<Integer> remainderResult = bestSum(remainder, numbers);
+            List<Integer> remainderResult = bestSum(remainder, numbers, memo);
             if (remainderResult != null) {
                 List<Integer> concat1 = new ArrayList<>();
                 concat1.addAll(0, remainderResult);
@@ -27,12 +29,13 @@ public class BestSum {
             }
         }
 
+        memo.put(targetSum, shortestCombination);
         return shortestCombination;
     }
 
     public static void main(String[] args) {
         HashMap<Integer, List<Integer>> memo = new HashMap<>();
-        List<Integer> numbers = Arrays.asList(new Integer[] { 2, 3, 5 });
-        System.out.println(bestSum(8, numbers));
+        List<Integer> numbers = Arrays.asList(new Integer[] { 1, 2, 5, 25 });
+        System.out.println(bestSum(100, numbers, memo));
     }
 }
