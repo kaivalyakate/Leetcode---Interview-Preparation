@@ -3,36 +3,36 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public class HowSum {
+public class BestSum {
 
-    public static List<Integer> howSum(int targetSum, List<Integer> numbers, HashMap<Integer, List<Integer>> memo) {
-        if (memo.containsKey(targetSum)) {
-            return memo.get(targetSum);
-        } else if (targetSum == 0) {
+    public static List<Integer> bestSum(int targetSum, List<Integer> numbers) {
+        if (targetSum == 0) {
             return new ArrayList<>();
         } else if (targetSum < 0) {
             return null;
         }
 
+        List<Integer> shortestCombination = null;
+
         for (Integer x : numbers) {
             int remainder = targetSum - x;
-            List<Integer> remainderResult = howSum(remainder, numbers, memo);
+            List<Integer> remainderResult = bestSum(remainder, numbers);
             if (remainderResult != null) {
                 List<Integer> concat1 = new ArrayList<>();
                 concat1.addAll(0, remainderResult);
                 concat1.add(x);
-                memo.put(targetSum, concat1);
-                return memo.get(targetSum);
+                if (shortestCombination == null || concat1.size() < shortestCombination.size()) {
+                    shortestCombination = concat1;
+                }
             }
         }
 
-        memo.put(targetSum, null);
-        return null;
+        return shortestCombination;
     }
 
     public static void main(String[] args) {
         HashMap<Integer, List<Integer>> memo = new HashMap<>();
         List<Integer> numbers = Arrays.asList(new Integer[] { 2, 3, 5 });
-        System.out.println(howSum(8, numbers, memo));
+        System.out.println(bestSum(8, numbers));
     }
 }
