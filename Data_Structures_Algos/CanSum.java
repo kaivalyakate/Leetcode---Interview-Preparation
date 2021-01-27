@@ -31,6 +31,6 @@ public class CanSum {
     public static void main(String[] args) {
         HashMap<Integer, Integer> memo = new HashMap<Integer, Integer>();
 
-        System.out.println(canSum(300, Arrays.asList(new Integer[] { 2, 3 }), memo));
+        System.out.println(canSum(1, Arrays.asList(new Integer[] { 2, 3 }), memo));
     }
 }
