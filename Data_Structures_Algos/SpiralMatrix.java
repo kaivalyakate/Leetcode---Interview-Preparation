@@ -1,5 +1,8 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SpiralMatrix {
 
@@ -30,7 +33,16 @@ public class SpiralMatrix {
     }
 
     public static void main(String[] args) {
-        int matrix[][] = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } };
-        System.out.println(spirallyTraverse(matrix, 4, 4));
+        // int matrix[][] = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13,
+        // 14, 15, 16 } };
+        // System.out.println(spirallyTraverse(matrix, 4, 4));
+        List<String> aList = Arrays.asList("Geeks", "Geeks", "GeeksQuiz", "GeeksforGeeks", "GFG");
+
+        // Creating a hash set using constructor
+        Set<String> hSet = new HashSet<String>(aList);
+
+        System.out.println("Created HashSet is");
+        for (String x : hSet)
+            System.out.println(x);
     }
 }
