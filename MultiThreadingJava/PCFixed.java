@@ -42,11 +42,12 @@ class Q {
 
 class Producer implements Runnable {
     Q q;
+    Thread t;
 
     Producer(Q q) {
         this.q = q;
-        new Thread(this, "Producer").start();
-        ;
+        this.t = new Thread(this, "Producer");
+        this.t.start();
     }
 
     @Override
