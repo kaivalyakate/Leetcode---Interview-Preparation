@@ -8,10 +8,11 @@ public class FCall {
     public static void main(String[] args) {
         ExecutorService es = Executors.newFixedThreadPool(2);
         Future<Integer> f1;
-        Future<Double> f2;
+        Future<Integer> f2;
+        Callable<Integer> c1 = new Sum(10);
 
-        f1 = es.submit(new Sum(10));
-        f2 = es.submit(new Hypotenuse(10.34, 15.89));
+        f1 = es.submit(c1);
+        f2 = es.submit(new Sum(20));
 
         try {
             System.out.println(f1.get());
