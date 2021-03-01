@@ -33,23 +33,18 @@ public class Edible {
     }
 
     public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-
-        int n = sc.nextInt();
-        int m = sc.nextInt();
-        int start = sc.nextInt();
-        int dir = sc.nextInt();
-
-        int grid[][] = new int[n][m];
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                grid[i][j] = sc.nextInt();
-            }
-        }
-
-        int ans = edibleSlice(n, m, start, dir, grid);
-
-        System.out.println(ans);
+        List<Integer> arr = new ArrayList<>();
+        arr.add(1);
+        arr.add(2);
+        arr.add(3);
+        List<Integer> arr1 = new ArrayList<>();
+        arr1.add(1);
+        arr1.add(2);
+        arr1.add(3);
+        HashMap<Integer, String> newArray = new HashMap<>();
+        newArray.put(1, "2");
+        newArray.put(2, "2");
+        newArray.put(3, "3");
+        System.out.println(arr.equals(arr1));
     }
 }
