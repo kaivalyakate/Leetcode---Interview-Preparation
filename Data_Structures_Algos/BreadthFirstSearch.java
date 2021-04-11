@@ -1,7 +1,3 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
-
 public class BreadthFirstSearch {
 
     // public static int ReverseNum(int num) {
