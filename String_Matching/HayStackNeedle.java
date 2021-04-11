@@ -1,16 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class KMPAlgorithm {
+public class HayStackNeedle {
 
-    public static List<Integer> FoundIndexPattern(String text, String pat) {
+    public static int FoundIndexPattern(String text, String pat) {
         int N = text.length();
         int M = pat.length();
 
         int[] lps = new int[M];
         lps = ComputerLPSArray(pat, M, lps);
-
-        List<Integer> ans = new ArrayList<>();
 
         int i = 0, j = 0;
         while (i < N) {
@@ -19,8 +17,7 @@ public class KMPAlgorithm {
                 j++;
             }
             if (j == M) {
-                ans.add(i - j);
-                j = lps[j - 1];
+                return (i - j);
             } else if (i < N && text.charAt(i) != pat.charAt(j)) {
                 if (j != 0) {
                     j = lps[j - 1];
@@ -30,7 +27,7 @@ public class KMPAlgorithm {
             }
         }
 
-        return ans;
+        return -1;
     }
 
     public static int[] ComputerLPSArray(String pat, int M, int[] lps) {
@@ -59,11 +56,6 @@ public class KMPAlgorithm {
     }
 
     public static void main(String[] args) {
-        String text = "ABABDABABABC";
-        String pat = "ABABC";
-        List<Integer> ans = FoundIndexPattern(text, pat);
-        for (int x : ans) {
-            System.out.println(x);
-        }
+        System.out.println(FoundIndexPattern("hel", "z"));
     }
 }
