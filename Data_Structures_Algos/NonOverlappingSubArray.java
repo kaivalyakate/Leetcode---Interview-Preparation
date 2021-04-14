@@ -6,7 +6,7 @@ public class NonOverlappingSubArray {
 
     public static int GetMaxArrays(int arr[], int K) {
         int max_so_far = Integer.MIN_VALUE, max_ending_here = 0, start = 0, end = 0, s = 0;
-        int max1 = 0, max2 = 0;
+        int max1 = -1, max2 = -1;
         for (int i = 0; i < arr.length; i++) {
             max_ending_here += arr[i];
 
@@ -16,7 +16,6 @@ public class NonOverlappingSubArray {
                 end = i;
                 if(end>start && (end - start + 1)==K){
                     max1 = max_so_far;
-                    break;
                 }
             }
 
@@ -32,6 +31,6 @@ public class NonOverlappingSubArray {
     }
 
     public static void main(String[] args) {
-        System.out.println(GetMaxArrays(new int[] { 3, 6, 1, 1, 6 }, 2));
+        System.out.println(GetMaxArrays(new int[] { 2, 5, 1, 2, 7, 3, 0 }, 2));
     }
 }
