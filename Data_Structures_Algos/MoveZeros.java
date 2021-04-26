@@ -4,34 +4,31 @@ import java.util.LinkedList;
 public class MoveZeros {
 
     public static int[] moveZeroes(int[] nums) {
-        int firstZero = 0;
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]==0){
-                firstZero = i;
+        int fZero = 0;
+        boolean flag = false;
+        if(nums.length==1){
+            return nums;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) {
+                fZero = i;
+                flag = true;
                 break;
             }
         }
-        int firstNonZero = 0;
-        while(firstZero<nums.length || firstNonZero<nums.length){
-            if(nums[firstNonZero]==0){
-                while(nums[firstNonZero]==0){
-                    if(nums[firstNonZero]==0){
-                        firstNonZero++;
-                    }
+        for (int i = fZero; i < nums.length; i++) {
+            if(flag=true){
+                if (nums[i] != 0) {
+                    nums[fZero] = nums[i];
+                    nums[i] = 0;
+                    fZero++;
                 }
             }
-            if(firstZero<nums.length && firstNonZero<nums.length){
-                int temp = nums[firstZero];
-                nums[firstZero] = nums[firstNonZero];
-                nums[firstNonZero] = temp;
-                firstZero = firstNonZero;
-                firstNonZero+=1;
-            }
         }
-        return nums;   
+        return nums;
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(moveZeroes(new int[] { 1, 0, 3, 1, 2 })));
+        System.out.println(Arrays.toString(moveZeroes(new int[] { 1 })));
     }
 }
