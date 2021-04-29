@@ -1,6 +1,6 @@
 public class MountainArray {
 
-    public boolean validMountainArray(int[] arr) {
+    public boolean validMountainArray(int[] A) {
         int N = A.length;
         int i = 0;
 
