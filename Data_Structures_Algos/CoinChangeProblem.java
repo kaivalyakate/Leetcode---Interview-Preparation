@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+
 public class CoinChangeProblem {
 
     public static int coinChange(int[] coins, int amount) {
@@ -22,6 +24,7 @@ public class CoinChangeProblem {
     }
 
     public static void main(String[] args) {
-        System.out.println(coinChange(new int[] { 2 }, 3));
+        BigDecimal bigNumber = new BigDecimal("3.14");
+        System.out.println(bigNumber.toString());
     }
 }
