@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -32,7 +34,27 @@ public class MatSample {
         // for(Map.Entry<Integer, String> entry: wordMap.entrySet()){
         // System.out.println(entry.getKey()+" "+entry.getValue());
         // }
-        int []a = {1, 2, 3, 4, 5};
-        System.out.println(hammingWeight(-3));
+        
+        Dog a = new Dog();
+        System.out.println(a.name);
+        a.animalNoise();
+    }
+}
+
+class Animal{
+    String name = "KK";
+
+    public void animalNoise(){
+        System.out.println("KK");
+    }
+}
+
+class Dog extends Animal{
+
+    String name = "BKJ";
+
+    @Override
+    public void animalNoise(){
+        System.out.println("BKJ");
     }
 }
