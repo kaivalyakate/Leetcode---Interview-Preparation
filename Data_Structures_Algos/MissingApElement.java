@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public class MissingApElement {
 
@@ -19,6 +21,7 @@ public class MissingApElement {
     }
 
     public static void main(String[] args) {
-        getMissingElement(new int[]{2, 10, 14});
+        //getMissingElement(new int[]{2, 10, 14});
+        
     }
 }
