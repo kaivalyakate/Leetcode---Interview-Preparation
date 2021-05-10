@@ -60,13 +60,48 @@ public class LinkedListCycle {
         return head;
     }
 
+    public static LNode evenOddList(LNode head){
+        LNode oddHead = null;
+        LNode evenHead = null;
+        LNode o = null, e = null;
+        LNode temp = head;
+        int i = 0;
+        while (temp != null) {
+            if (i % 2 == 0) {
+                if (oddHead == null) {
+                    oddHead = temp;
+                    o = oddHead;
+                } else {
+                    oddHead.next = temp;
+                    oddHead = oddHead.next;
+                }
+            } else {
+                if (evenHead == null) {
+                    evenHead = temp;
+                    e = evenHead;
+                } else {
+                    evenHead.next = temp;
+                    evenHead = evenHead.next;
+               }
+            }
+            temp = temp.next;
+            i++;
+        }
+        LNode temp1 = o;
+        while (temp1.next != null) {
+            temp1 = temp1.next;
+        }
+        temp1.next = e;
+        return o;
+    }
+
     public static void main(String[] args) {
         LNode newNode = new LNode(1);
         LNode newNode1 = new LNode(2);
-        LNode newNode2 = new LNode(4);
-        LNode newNode3 = new LNode(1);
-        LNode newNode4 = new LNode(3);
-        LNode newNode5 = new LNode(5);
+        LNode newNode2 = new LNode(3);
+        LNode newNode3 = new LNode(4);
+        LNode newNode4 = new LNode(5);
+        LNode newNode5 = new LNode(6);
         // newNode.setNext(newNode1);
         // newNode1.setNext(newNode2);
         // newNode2.setNext(newNode3);
@@ -76,10 +111,10 @@ public class LinkedListCycle {
         LNode head = newNode;
         newNode.next = newNode1;
         newNode1.next = newNode2;
-        LNode head2 = newNode3;
+        newNode2.next = newNode3;
         newNode3.next = newNode4;
         newNode4.next = newNode5;
-        LNode ans = mergeTwoLists(head, head2);
+        LNode ans = evenOddList(head);
         while (ans != null) {
             System.out.println(ans.data);
             ans = ans.next;
