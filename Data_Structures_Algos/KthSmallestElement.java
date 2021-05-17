@@ -1,11 +1,9 @@
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 public class KthSmallestElement {
 
-    public int kthSmallest(TreeNode root, int k) {
-        LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
+    public int kthSmallest(BNode root, int k) {
+        LinkedList<BNode> stack = new LinkedList<BNode>();
         while (true) {
             while (root != null) {
                 stack.add(root);
@@ -21,21 +19,21 @@ public class KthSmallestElement {
 
     public static void main(String[] args) {
         BinaryTree bst = new BinaryTree();
-        bst.InsertNode(new TreeNode(5));
-        bst.InsertNode(new TreeNode(3));
-        bst.InsertNode(new TreeNode(6));
-        bst.InsertNode(new TreeNode(2));
-        bst.InsertNode(new TreeNode(1));
-        bst.InsertNode(new TreeNode(4));
+        bst.InsertNode(new BNode(5));
+        bst.InsertNode(new BNode(3));
+        bst.InsertNode(new BNode(6));
+        bst.InsertNode(new BNode(2));
+        bst.InsertNode(new BNode(1));
+        bst.InsertNode(new BNode(4));
         System.out.println(new KthSmallestElement().kthSmallest(bst.root, 3));
     }
 }
 
 class BinaryTree {
-    TreeNode root = null;
+    BNode root = null;
 
-    public void InsertNode(TreeNode node) {
-        TreeNode temp = root;
+    public void InsertNode(BNode node) {
+        BNode temp = root;
 
         if (temp == null) {
             this.root = node;
@@ -60,5 +58,16 @@ class BinaryTree {
         }
     }
 
+}
+
+class BNode{
+
+    int val;
+    BNode left;
+    BNode right;
+
+    BNode(int data){
+        this.val = data;
+    }
 }
 
