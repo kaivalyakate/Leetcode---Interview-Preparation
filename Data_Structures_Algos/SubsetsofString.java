@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
 
 public class SubsetsofString{
 
@@ -11,7 +9,8 @@ public class SubsetsofString{
             subsets.add("");
             return subsets;
         } else {
-            subsets.add("");        }
+            subsets.add("");
+        }
         for(int i=0;i<ans.length();i++){
             for(int j=i;j<ans.length();j++){
                 subsets.add(ans.substring(i, j+1));
