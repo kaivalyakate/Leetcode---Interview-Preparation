@@ -4,12 +4,12 @@ import java.lang.Math;
 class HeapSort {
 
     public static void main(String[] args) {
-        Heap heapList = new Heap();
-        Integer[] A = new Integer[] { 4, 1, 3, 2, 16, 9, 10, 14, 8, 7 };
-        heapList.setHeapList(Arrays.asList(A));
-        heapList.BuildMaxHeap();
-        System.out.println(heapList.getHeapList());
-
+        // Heap heapList = new Heap();
+        // Integer[] A = new Integer[] { 4, 1, 3, 2, 16, 9, 10, 14, 8, 7 };
+        // heapList.setHeapList(Arrays.asList(A));
+        // heapList.BuildMaxHeap();
+        // System.out.println(heapList.getHeapList());
+        
     }
 }
 
