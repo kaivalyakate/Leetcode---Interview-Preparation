@@ -12,6 +12,9 @@ public class SegmentTreeImplementation {
         segmentTreeImpl.build(0, 0, elements.size() - 1);
         System.out.println(segmentTreeImpl.toString());
         System.out.println(segmentTreeImpl.query(0, 0, elements.size() - 1, 1, 6));
+        segmentTreeImpl.update(0, 0, elements.size()-1, 2, 6);
+        System.out.println(segmentTreeImpl.toString());
+        System.out.println(segmentTreeImpl.query(0, 0, elements.size() - 1, 1, 3));
     }
 }
 
@@ -46,6 +49,21 @@ class STree {
             int p1 = query(2 * node + 1, start, mid, left, right);
             int p2 = query(2 * node + 2, mid + 1, end, left, right);
             return Math.min(p1, p2);
+        }
+    }
+
+    public void update(int node, int start, int end, int index, int val){
+        if(start==end){
+            segmentTree.set(node, val);
+            elements.set(index, val);
+        } else {
+            int mid = (start+end)/2;
+            if(start<=index && index<=mid){
+                update(2*node+1, start, mid, index, val);
+            } else {
+                update(2*node+2, mid+1, end, index, val);
+            }
+            segmentTree.set(node, Math.min(segmentTree.get(2*node+1), segmentTree.get(2*node+2)));
         }
     }
 
