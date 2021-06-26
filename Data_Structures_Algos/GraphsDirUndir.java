@@ -11,30 +11,21 @@ public class GraphsDirUndir {
 
     public static boolean canReach(int[] arr, int start) {
         Queue<Integer> queue = new LinkedList<>();
-        Graph graph = new Graph(arr.length);
-        for(int i=0;i<arr.length;i++){
-            int posOne = i+arr[i];
-            int posTwo = i-arr[i];
-            if(posOne<arr.length && arr[i]!=0){
-                graph.addEdge(i, posOne);
-            }
-            if(posTwo>=0 && arr[i]!=0){
-                graph.addEdge(i, posTwo);
-            }
-        }
         queue.add(start);
         boolean[] visited = new boolean[arr.length];
         while(!queue.isEmpty()){
             int node = queue.remove();
+            visited[node] = true;
             if(arr[node]==0){
                 return true;
             }
-            for(int i=0;i<graph.adjList.get(node).size();i++){
-                int index = graph.adjList.get(node).get(i);
-                if(visited[index]!=true){
-                    visited[index] = true;
-                    queue.add(index);
-                }
+            int posOne = arr[node]+node;
+            int posTwo = node-arr[node];
+            if(posOne<arr.length && visited[posOne]!=true){
+                queue.add(posOne);
+            }
+            if(posTwo>=0 && visited[posTwo]!=true){
+                queue.add(posTwo);
             }
         }
         return false;
@@ -52,7 +43,7 @@ public class GraphsDirUndir {
         // graph.addEdge(4, 1);
         // graph.addEdge(4, 0);
         // graph.depthFirstSearch(0);
-        System.out.println(canReach(new int[]{ 0, 1}, 1));
+        System.out.println(canReach(new int[]{ 4, 2, 3, 0, 3, 1, 2}, 5));
     }
 }
 
