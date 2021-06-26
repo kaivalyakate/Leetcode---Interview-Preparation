@@ -3,28 +3,62 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class GraphsDirUndir {
 
+    public static boolean canReach(int[] arr, int start) {
+        Queue<Integer> queue = new LinkedList<>();
+        Graph graph = new Graph(arr.length);
+        for(int i=0;i<arr.length;i++){
+            int posOne = i+arr[i];
+            int posTwo = i-arr[i];
+            if(posOne<arr.length && arr[i]!=0){
+                graph.addEdge(i, posOne);
+            }
+            if(posTwo>=0 && arr[i]!=0){
+                graph.addEdge(i, posTwo);
+            }
+        }
+        queue.add(start);
+        boolean[] visited = new boolean[arr.length];
+        while(!queue.isEmpty()){
+            int node = queue.remove();
+            if(arr[node]==0){
+                return true;
+            }
+            for(int i=0;i<graph.adjList.get(node).size();i++){
+                int index = graph.adjList.get(node).get(i);
+                if(visited[index]!=true){
+                    visited[index] = true;
+                    queue.add(index);
+                }
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
-        Graph graph = new Graph(10);
-        graph.addEdge(0, 1);
-        graph.addEdge(0, 4);
-        graph.addEdge(1, 3);
-        graph.addEdge(1, 2);
-        graph.addEdge(3, 1);
-        graph.addEdge(3, 2);
-        graph.addEdge(3, 4);
-        graph.addEdge(4, 1);
-        graph.addEdge(4, 0);
-        graph.depthFirstSearch(0);
+        // Graph graph = new Graph(10);
+        // graph.addEdge(0, 1);
+        // graph.addEdge(0, 4);
+        // graph.addEdge(1, 3);
+        // graph.addEdge(1, 2);
+        // graph.addEdge(3, 1);
+        // graph.addEdge(3, 2);
+        // graph.addEdge(3, 4);
+        // graph.addEdge(4, 1);
+        // graph.addEdge(4, 0);
+        // graph.depthFirstSearch(0);
+        System.out.println(canReach(new int[]{ 0, 1}, 1));
     }
 }
 
 class Graph {
 
-    private List<List<Integer>> adjList;
+    public List<List<Integer>> adjList;
     private int numberOfVertices;
     HashSet<Integer> visitedNodes = new HashSet<>();
 
