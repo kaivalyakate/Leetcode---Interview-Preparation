@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
+        "MultiThreadingJava",
         "Data_Structures_Algos",
-        "MultiThreadingJava"
+        "30-Day-July-Challenge"
     ]
 }

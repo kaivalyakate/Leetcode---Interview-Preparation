@@ -1,4 +1,8 @@
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class TwoSum {
@@ -21,9 +25,21 @@ public class TwoSum {
         return ans;
     }
 
-    public static void main(String[] args) {
-        int[] numbers = new int[] { 2, 7, 11, 15 };
-        int target = 9;
-        System.out.println(twoSum(numbers, target));
+    public static void main(String[] args) throws NoSuchMethodException, SecurityException {
+        // int[] numbers = new int[] { 2, 7, 11, 15 };
+        // int target = 9;
+        // System.out.println(twoSum(numbers, target));
+        TwoSum toSum = new TwoSum();
+        Class cls = toSum.getClass();
+        Method[] methods = cls.getMethods();
+        methods[0].getName();
+        ArrayList<String> methodList = new ArrayList<>();
+        for (Method method : methods) {
+            methodList.add(method.getName());
+        }
+        Collections.sort(methodList);
+        for (String name : methodList) {
+            System.out.println(name);
+        }
     }
 }
