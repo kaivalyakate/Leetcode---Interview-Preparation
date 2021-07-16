@@ -15,7 +15,15 @@ public class Sample {
     }
     
     public static void main(String[] args) {
-        int[][] matrix = new int[][]{{-5}};
-        System.out.println(kthSmallest(matrix, 1));
+        // int[][] matrix = new int[][]{{-5}};
+        // System.out.println(kthSmallest(matrix, 1));
+        Map<Integer, Integer> mapping = new HashMap<>();
+        mapping.put(0, 2);
+        mapping.put(1, 1);
+        mapping.put(2, 1);
+        mapping.entrySet().stream().sorted(Map.Entry.comparingByValue());
+        for(Map.Entry<Integer, Integer> keyMap: mapping.entrySet()){
+            System.out.println(keyMap.getKey()+" "+keyMap.getValue());
+        }
     }
 }
