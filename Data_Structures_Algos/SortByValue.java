@@ -21,8 +21,13 @@ public class SortByValue {
     }
     
     public static void main(String[] args) {
-        int[] ans = sortByValue(new int[]{1, 2, 3, 4}, new int[]{5, 1, 3, 8});
-        for(int x: ans){
+        // int[] ans = sortByValue(new int[]{1, 2, 3, 4}, new int[]{5, 1, 3, 8});
+        // for(int x: ans){
+        //     System.out.println(x);
+        // }
+        String[] ans = new String[]{"cb", "ae", "adc"};
+        Arrays.sort(ans);
+        for(String x: ans){
             System.out.println(x);
         }
     }
