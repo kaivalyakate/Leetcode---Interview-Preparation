@@ -2,6 +2,7 @@
     "java.project.sourcePaths": [
         "MultiThreadingJava",
         "Data_Structures_Algos",
-        "30-Day-July-Challenge"
+        "30-Day-July-Challenge",
+        "codeforces"
     ]
 }
