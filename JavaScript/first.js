@@ -1,9 +1,7 @@
-function sum(...a){
-    let sum = 0;
-    for(let x in a){
-        sum += x;
-    }
-    return sum;
-}
+let x= {}, y = {name:"Ronny"},z = {name:"John"};
 
-console.log(sum(2, 3));
+x[y] = {name:"Vivek"};
+x[z] = {name:"Akki"};
+
+console.log(x[y]);
+console.log(x);
